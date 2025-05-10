@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تفكيك سيارة فيرنا 2020</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      text-align: center;
+    }
+    .container {
+      position: relative;
+      display: inline-block;
+    }
+    .part {
+      position: absolute;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .part:hover {
+      border: 2px solid red;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 2px solid #333;
+      padding: 20px;
+      z-index: 10;
+      display: none;
+    }
+    .popup img {
+      max-width: 100%;
+      height: auto;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 5;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>انقر على أي قطعة لرؤية التفاصيل</h1>
+  <div class="container">
+    <img src="car-parts-verna.png" alt="صورة السيارة المفككة">
+
+    <div class="part" style="top: 420px; left: 40px; width: 120px; height: 100px;" onclick="showPopup('المحرك', 'engine.png')"></div>
+    <div class="part" style="top: 300px; left: 100px; width: 80px; height: 80px;" onclick="showPopup('العجلة الأمامية', 'wheel.png')"></div>
+
+  </div>
+
+  <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+  <div class="popup" id="popup">
+    <h2 id="partName"></h2>
+    <img id="partImage" src="" alt="صورة القطعة">
+  </div>
+
+  <script>
+    function showPopup(name, imgSrc) {
+      document.getElementById('partName').textContent = name;
+      document.getElementById('partImage').src = imgSrc;
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('popup').style.display = 'block';
+    }
+    function hidePopup() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
